@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import sqlite3
 from sqlalchemy import create_engine
+import sys
 
 # Load the data files
 def load_data(messages_filepath, categories_filepath):
