@@ -18,8 +18,9 @@ from sqlalchemy import create_engine
 def load_data(database_filepath):
     '''
     Function to load the database from the given filepath and process them as X, y and category_names
-    Input: Databased filepath
-    Output: Returns the Features X & target y along with target columns names catgeory_names
+    
+    Input: Filepath for the Database object
+    Output: Returns the features X & target y along with target column names
     '''
     table_name = 'MessagesCategories'
     engine = create_engine(f"sqlite:///{database_filepath}")
@@ -33,8 +34,9 @@ def load_data(database_filepath):
 def tokenize(text):
     '''
     Function to tokenize the text messages
-    Input: text
-    output: cleaned tokenized text as a list object
+    
+    Input: Text column to clean and tokenize
+    Output: Cleaned tokenized text as a list object
     '''
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
@@ -48,7 +50,8 @@ def tokenize(text):
 def build_model():
     '''
     Function to build a model, create pipeline, hypertuning as well as gridsearchcv
-    Input: N/A
+    
+    Input: Not Required
     Output: Returns the model
     '''
     pipeline = Pipeline([
@@ -66,7 +69,8 @@ def build_model():
 def evaluate_model(model, X_test, Y_test, category_names):
     '''
     Function to evaluate a model and return the classificatio and accurancy score.
-    Inputs: Model, X_test, y_test, Catgegory_names
+    
+    Inputs: Model, X_test, y_test, catgegory_names
     Outputs: Prints the Classification report & Accuracy Score
     '''
     y_pred = model.predict(X_test)
@@ -77,8 +81,9 @@ def evaluate_model(model, X_test, Y_test, category_names):
 def save_model(model, model_filepath):
     '''
     Function to save the model
-    Input: model and the file path to save the model
-    Output: save the model as pickle file in the give filepath 
+    
+    Input: Model and Filepath to save the objects
+    Output: Save the model as pickle file in the give filepath 
     '''
     pickle.dump(model, open(model_filepath, 'wb'))
 
