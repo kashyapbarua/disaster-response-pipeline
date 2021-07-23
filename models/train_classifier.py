@@ -13,7 +13,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
 from sqlalchemy import create_engine
-#nltk.download(['punkt', 'wordnet'])
 
 # Load dataset into workspace
 def load_data(database_filepath):
